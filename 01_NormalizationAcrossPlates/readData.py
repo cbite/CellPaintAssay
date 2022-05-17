@@ -8,10 +8,8 @@ def readData(input_file=None,seperator=None,set_headers='infer'):
     return data_file
 
 def checkMissingValues(input_data_frame):
-    missing_values=input_data_frame.isnull()
-    any_missing_values=any(missing_values)
-    print('Missing values check returned: %s' % any_missing_values)
-    missing_value_in_column_name=input_data_frame.columns[any_missing_values]
-    print('There are %d columns with missing values' % missing_value_in_column_name[0].__len__())
-    print('The following columns have missing values %s' % missing_value_in_column_name)
+    missing_values=input_data_frame.columns[input_data_frame.isnull().any()].tolist()
+    condition= not missing_values
+    print('Missing values check returned: %s' % condition)
+    print('there are %d columns with a missing value' % missing_values.__len__())
     return missing_values
