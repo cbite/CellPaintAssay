@@ -7,7 +7,7 @@ This repository contains the python scripts to read the CellProfiler output data
 <p>The CellProfiler data is loaded via the readData() function (loaded form the readData.py file). This function takes 3 arguments:<i>input_file</i>, <i>seperator</i>, and <i>set_headers</i>. To read a csv file with headers (standard CellProfiler csv output), the following command can be used:</p>
 
 ```python
-path_to_file="D:\Example\CellProfiler_image.csv"
+path_to_file="D:/Example/CellProfiler_image.csv"
 data_cell_profiler=readData(path_to_file,seperator=',')
 ```
 Note: the set_headers argument is not necessary to explicitly specify since it will be inferred. However, if your csv file does not contain any headers, you can set set_headers=None.
