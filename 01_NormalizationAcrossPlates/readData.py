@@ -9,7 +9,7 @@ def readData(input_file=None,seperator=None,set_headers='infer'):
 
 def checkMissingValues(input_data_frame):
     missing_values=input_data_frame.columns[input_data_frame.isnull().any()].tolist()
-    condition= not missing_values
+    condition= any(missing_values)
     print('Missing values check returned: %s' % condition)
     print('there are %d columns with a missing value' % missing_values.__len__())
     return missing_values
@@ -18,5 +18,6 @@ def check_for_metadata(input_data_frame):
     columns=input_data_frame.columns
     # Capatalize all columns names
     columns_capatalized=[name.upper() for name in columns]
-    metadata_present=[bool(re.search('METADATA',i)) for i in columns_capatalized]
+    metadata_present=[bool(re.search('METADATA_WELL',i)) for i in columns_capatalized]
     print('Metadata present: %s' % any(metadata_present))
+    return metadata_present
